@@ -35,7 +35,7 @@ pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(interface_de_comunicao_serial interface_de_comunicao_serial.c )
+add_executable(interface_de_comunicao_serial interface_de_comunicao_serial.c inclusao/ssd1306.c)
 
 pico_set_program_name(interface_de_comunicao_serial "interface_de_comunicao_serial")
 pico_set_program_version(interface_de_comunicao_serial "0.1")
@@ -43,6 +43,9 @@ pico_set_program_version(interface_de_comunicao_serial "0.1")
 # Modify the below lines to enable/disable output over UART/USB
 pico_enable_stdio_uart(interface_de_comunicao_serial 1)
 pico_enable_stdio_usb(interface_de_comunicao_serial 1)
+
+pico_generate_pio_header(interface_de_comunicao_serial ${CMAKE_CURRENT_LIST_DIR}/ws2818b.pio)
+
 
 # Add the standard library to the build
 target_link_libraries(interface_de_comunicao_serial
@@ -57,6 +60,9 @@ target_include_directories(interface_de_comunicao_serial PRIVATE
 target_link_libraries(interface_de_comunicao_serial 
         hardware_i2c
         hardware_timer
+        hardware_pio
+        hardware_clocks
+        pico_stdlib
         
         )
 
