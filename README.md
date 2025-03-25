@@ -131,5 +131,3 @@ cd build
 cmake ..
 make
 Conecte o Raspberry Pi Pico no modo de bootloader e copie o arquivo .uf2 gerado para o dispositivo.
-
-Link de demonstração do projeto: https://youtube.com/shorts/AhU9gb1A8GU?feature=share
